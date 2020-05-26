@@ -18,6 +18,7 @@ def create(request) :
     # new_board.meeting_time = request.POST['meeting_time']
     new_board.number = request.POST['number']
     new_board.location = request.POST['location']
+    new_board.writer = request.user.username
     new_board.save()
     return redirect('board')
 
