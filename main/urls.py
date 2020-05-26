@@ -8,4 +8,7 @@ urlpatterns = [
     path('board/', views.board, name="board"),
     path('detail/<int:board_id>', views.detail, name="detail"),
     path('create/', views.create, name='create'),
+    path('edit/<int:board_id>', views.edit, name='edit'),
+    path('update/<int:board_id>', views.update, name="update"),
+    path('delete/<int:board_id>', views.delete, name="delete"),
 ]
