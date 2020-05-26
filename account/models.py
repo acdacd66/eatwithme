@@ -5,3 +5,4 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     code = models.IntegerField(null = True)
     department = models.CharField(max_length=200, null= True)
+   

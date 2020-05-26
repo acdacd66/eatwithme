@@ -1,0 +1,15 @@
+<h1>글 수정하기</h1>
+<form action ="{%url 'update' board.id %}" method ="POST">
+    {%csrf_token%}
+    제목:<input type="text" value="{{board.title}}" name = "title">
+    <br>
+    본문 : <textarea name="body" id="" cols="30" rows="10">{{board.body}}</textarea>
+    <br>
+    인원수 : <input type="number" value="{{board.number}}" name="number">
+    <br>
+    장소 : <input type="text" value="{{board.location}}" name = 'location'>
+    <br><br>
+    <button type="submit">작성!</button>
+
+
+</form>
