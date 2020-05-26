@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from .models import User
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib import auth
 # Create your views here.
@@ -12,7 +12,12 @@ def signup(request):
                 return render(request, 'signup.html', {'error': 'Username has already been taken'})
             except User.DoesNotExist:
                 user = User.objects.create_user(
-                    request.POST['username'], password=request.POST['password1'])
+                    request.POST['username'], 
+                    password=request.POST['password1'],
+                    code = request.POST['code'],
+                    department = request.POST['department'])
+                    
+    
                 auth.login(request, user)
                
 
@@ -41,4 +46,7 @@ def logout(request):
     auth.logout(request)
     return render(request,'login.html')
 
-
+def mypage(request):
+    mypage_info = User.objects.get(username=request.user.username)
+    
+    return render(request,'mypage.html') 
