@@ -20,17 +20,20 @@
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">my page</a>
+          <a class="nav-link" href="{% url 'mypage' %}">my page</a>
         </li>
+        {% if not user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">sign in</a>
+          <a class="nav-link" href="{% url 'login' %}">login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'signup' %}">sign up</a>
         </li>
+        {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">logout</a>
         </li>
+        {% endif %}
       </ul>
     </div>
   </nav>
@@ -39,5 +42,10 @@
 <br>
 
 
+  {% if user.is_authenticated %}
+    <h3> 안녕하세요 {{user.username}}</h3>
+  {% endif %}
 
+
+<br>
 <button onclick = "location.href = '#' ">게시판보기</button>
