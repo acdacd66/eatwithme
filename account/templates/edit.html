@@ -1,0 +1,13 @@
+<h1>개인정보 수정하기</h1>
+
+<form action="{%url 'update' user.id %}" method = "POST">
+    {%csrf_token%}
+    
+    <br>
+    학번: <input type="text" value = "{{user.code}}" name="code">
+    <br>
+    <br>
+    학과: <input type="text" value = "{{user.department}}" name="department">
+    <br>
+    <button type="submit">완료!</button>
+</form>

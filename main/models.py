@@ -9,6 +9,7 @@ class Board(models.Model):
     meeting_time = models.DurationField(null=True)
     number = models.IntegerField(null=True)
     location = models.CharField(max_length=30,null=True)
+    writer = models.CharField(max_length=500, null=True)
 
     def __str__(self):
         return self.title
