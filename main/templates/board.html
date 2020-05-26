@@ -1,0 +1,17 @@
+<h1> 게시판 </h1>
+<h2> 밥 먹을 친구를 찾아보세용 </h2>
+
+<a href="{%url 'home'%}">홈으로 돌아가기</a>
+<br>
+<a href="{%url 'new'%}">게시판 글 올리기</a>
+
+{% for board in boards %}
+
+
+<a href="{%url 'detail' board.id%}">
+{{board.title}}</a>
+<br>
+
+{% endfor %}
+
+
