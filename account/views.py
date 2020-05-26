@@ -1,6 +1,7 @@
 from .models import User
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib import auth
+from main.models import Board
 # Create your views here.
 
 def signup(request):
@@ -48,5 +49,16 @@ def logout(request):
 
 def mypage(request):
     mypage_info = User.objects.get(username=request.user.username)
-    
-    return render(request,'mypage.html') 
+    my_post=Board.objects.filter(writer=request.user.username)
+    return render(request,'mypage.html',{"my_post": my_post}) 
+
+def edit(request, user_id):
+    edit_user = get_object_or_404(User, pk = user_id)
+    return render(request, "edit.html", {"user": edit_user})
+
+def update(request, user_id):
+    update_user = get_object_or_404(User, pk = user_id)
+    update_user.code = request.POST['code']
+    update_user.department = request.POST['department']
+    update_user.save()
+    return redirect('mypage')
