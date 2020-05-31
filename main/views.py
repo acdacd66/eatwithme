@@ -30,7 +30,13 @@ def board(request) :
 
 def detail(request,board_id) :
     board = get_object_or_404(Board, pk = board_id) 
-    return render(request, 'detail.html',{'board':board})
+    applied=False #신청여부
+    if board.like.filter(username=request.user.username).exists():
+        applied=True
+    else:
+        applied=False
+    applier_count=board.total_appliers()
+    return render(request, 'detail.html',{'board':board,'applier_count':applier_count,'applied':applied})
 
 def update(request, board_id) :
     update_board = get_object_or_404(Board, pk=board_id)
@@ -51,3 +57,10 @@ def delete(request, board_id) :
     delete_board.delete()
     return redirect('board')
 
+def apply(request, board_id) :
+    detail_board=get_object_or_404(Board,pk=board_id)
+    if detail_board.like.filter(username=request.user.username).exists():
+        detail_board.like.remove(request.user)
+    else:
+        detail_board.like.add(request.user)
+    return redirect('detail',board_id)

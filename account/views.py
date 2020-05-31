@@ -50,7 +50,8 @@ def logout(request):
 def mypage(request):
     mypage_info = User.objects.get(username=request.user.username)
     my_post=Board.objects.filter(writer=request.user.username)
-    return render(request,'mypage.html',{"my_post": my_post}) 
+    applied_boards=request.user.User_apply.all()
+    return render(request,'mypage.html',{"my_post": my_post,"applied_boards":applied_boards}) 
 
 def edit(request, user_id):
     edit_user = get_object_or_404(User, pk = user_id)

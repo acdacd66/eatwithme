@@ -38,7 +38,17 @@
     </ul>
     {% endfor %}
   </div>
+  내가 신청한 글들
+</div>
+{% for tmp in applied_boards %}
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+      <a href="{% url 'detail' tmp.id %}">{{tmp.title}}</a>
+    </li>
 
+</ul>
+{% endfor %}
+</div>
 <br><br>
 <a href="{% url 'edit' user.id %}">개인정보 수정하기</a>
 <br>

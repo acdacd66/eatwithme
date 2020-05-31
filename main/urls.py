@@ -11,4 +11,5 @@ urlpatterns = [
     path('edit/<int:board_id>', views.edit, name='edit'),
     path('update/<int:board_id>', views.update, name="update"),
     path('delete/<int:board_id>', views.delete, name="delete"),
+    path('apply/<int:board_id>', views.apply, name="apply"),
 ]

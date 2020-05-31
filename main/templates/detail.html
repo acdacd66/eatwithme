@@ -15,4 +15,9 @@
 
 <a href="{%url 'edit' board.id%}"> 수정할래애..</a>
 <a href="{%url 'delete' board.id%}"> 혼자먹을래애..</a>
-
+{% if applied == False %}
+<a href="{%url 'apply' board.id%}"> 신청</a>
+{% else %}
+<a href="{%url 'apply' board.id%}"> 신청 취소</a>
+{% endif %}
+<p>총 {{applier_count}}명의 사람이 신청하였습니다.</p>
