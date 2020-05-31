@@ -10,9 +10,14 @@ class Board(models.Model):
     number = models.IntegerField(null=True)
     location = models.CharField(max_length=30,null=True)
     writer = models.CharField(max_length=500, null=True)
-
+    like=models.ManyToManyField(User, blank=True,related_name="User_apply")
     def __str__(self):
         return self.title
     
     def summary(self):
         return self.body[:100]
+    
+    def total_appliers(self):
+        return self.like.count()
+
+
