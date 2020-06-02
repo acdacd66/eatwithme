@@ -1,17 +1,64 @@
-<h1> 게시판 </h1>
-<h2> 밥 먹을 친구를 찾아보세용 </h2>
-
-<a href="{%url 'home'%}">홈으로 돌아가기</a>
-<br>
-<a href="{%url 'new'%}">게시판 글 올리기</a>
-
-{% for board in boards %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
 
-<a href="{%url 'detail' board.id%}">
-{{board.title}}</a>
-<br>
+
+<style>
+    body{
+        background-color: #FDDFF4;
+    }
+
+    .button{
+        border-radius: 12px;
+        background-color: white;
+        color: black;
+        border: 1.5px solid gray;
+        padding: 10px;
+    }
+    .card{
+        width: 50%;
+        height: 90%;
+        
+        /* radius 는 각을 둥글게 만들어줌 */
+        border-radius: 15px;
+        background-color: white;
+        
+        /* 그림자만들기 */
+        box-shadow: 10px 10px 5px grey;
+        
+        /* 위 왼 아래 오  */
+        margin: 10 auto 10 auto;
+        /* 경계선과 컨텐츠 사이의 거리 */
+        padding: 30px;
+
+
+    }
+    
+</style>
+
+<body>
+<div class="card">
+    <div>
+        <center>
+        <h1> eat with your friends !</h1>
+        <br>
+        <button type="button" class='button' onclick="location.href='{% url 'home' %}' ">홈으로 돌아가기</button>
+        <button type="button" class='button' onclick="location.href='{% url 'new' %}' ">게시판 글 올리기</button>
+        </center>
+    </div>
+    <br>
+    {% for board in boards %}
+
+    <br>
+    <div class="alert alert-warning" role="alert">
+        <center>
+        <a href="{%url 'detail' board.id%}" class="alert-link">{{board.title}}</a>
+        </center>
+</div>
 
 {% endfor %}
-
+</div>
+</body>
 
