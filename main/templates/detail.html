@@ -1,23 +1,51 @@
-<h1>내용</h1>
+<style>
+    body{
+        background-color: #F4E4FE;
+    }
+    .card{
+        width: 50%;
+        height: 90%;
+        
+        /* radius 는 각을 둥글게 만들어줌 */
+        border-radius: 15px;
+        background-color: white;
+        
+        /* 그림자만들기 */
+        box-shadow: 10px 10px 5px grey;
+        
+        /* 위 왼 아래 오  */
+        margin: 10 auto 10 auto;
+        /* 경계선과 컨텐츠 사이의 거리 */
+        padding: 30px;
+    }
+</style>
 
-<a href="{%url 'board'%}"> 게시판 둘러보기 </a>
+<body>
+    <div class="card">
+        <center>
 
-<h2>제목 : {{board.title}}</h2>
-<h3> 글쓴이 : {{board.writer}}</h3>
-<hr>
+        <h2>제목 : {{board.title}}</h2>
+        <h3> 글쓴이 : {{board.writer}}</h3>
+        <hr>
 
-<p>{{board.pub_date}}</p>
-<p> 어디서 만날까아~? : {{board.location}}</p>
-<p> 몇시에 만날까아~? : {{board.meeting_time}}</p>
-<p> 몇명이서 만날까아~? : {{board.number}}</p>
+        <p>{{board.pub_date}}</p>
+        <p> 어디서 만날까아~? : {{board.location}}</p>
+        <p> 몇시에 만날까아~? : {{board.meeting_time}}</p>
+        <p> 몇명이서 만날까아~? : {{board.number}}</p>
 
-<p>{{board.body}}</p>
+        <p>{{board.body}}</p>
 
-<a href="{%url 'edit' board.id%}"> 수정할래애..</a>
-<a href="{%url 'delete' board.id%}"> 혼자먹을래애..</a>
-{% if applied == False %}
-<a href="{%url 'apply' board.id%}"> 신청</a>
-{% else %}
-<a href="{%url 'apply' board.id%}"> 신청 취소</a>
-{% endif %}
-<p>총 {{applier_count}}명의 사람이 신청하였습니다.</p>
+        <a href="{%url 'edit2' board.id%}"> 수정할래애..</a>
+        <a href="{%url 'delete' board.id%}"> 혼자먹을래애..</a>
+        <a href="{%url 'board'%}"> 게시판 둘러보기 </a>
+        {% if applied == False %}
+        <a href="{%url 'apply' board.id%}"> 신청</a>
+        {% else %}
+        <a href="{%url 'apply' board.id%}"> 신청 취소</a>
+        {% endif %}
+        <p>총 {{applier_count}}명의 사람이 신청하였습니다.</p>
+
+        </center>
+
+    </div>
+</body>

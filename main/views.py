@@ -48,9 +48,9 @@ def update(request, board_id) :
     update_board.save()
     return redirect('detail', update_board.id)
 
-def edit(request, board_id) :
+def edit2(request, board_id) :
     edit_board = get_object_or_404(Board, pk = board_id)
-    return render(request, 'edit.html', {'board':edit_board})
+    return render(request, 'edit2.html', {'board':edit_board})
 
 def delete(request, board_id) :
     delete_board = get_object_or_404(Board, pk = board_id)

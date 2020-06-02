@@ -31,29 +31,42 @@
         /* 뒤에꺼가 가로 */
         padding: 10px 100px; 
     }
+    .what2{
+        border-radius: 12px;
+        background-color: white;
+        color: black;
+        border: 1.5px solid gray;
+        /* 뒤에꺼가 가로 */
+        padding: 10px 90px; 
+    }
+    .what3{
+        border-radius: 12px;
+        background-color: white;
+        color: black;
+        border: 1.5px solid gray;
+        /* 뒤에꺼가 가로 */
+        padding: 8px ; 
+    }
 </style>
 
 <body>
     <div class="card">
         <center>        
-        <br>        
-        <h1>친구를 구해볼까요오~?</h1>
-        <br>
+        <h1>다시 쓰까요~?</h1>
         <hr>
-        <form action="{% url 'create'%}" method="POST">
-            {% csrf_token %}
-        
-            <input class= "what" type="text" name='title' required="required" placeholder="제목을 입력하세용"><br><br>
-            <input class= "what" type="text" name='location' required="required" placeholder="어디서 만날까?"><br><br>
-            <input class= "what" type="number" name='number' required="required" placeholder="몇명이서 만날까용"><br><br>
-            <input class= "what" type="text" name='body' required="required" placeholder="내용입력!">
 
+        <form action ="{%url 'update' board.id %}" method ="POST">
+            {%csrf_token%}
+            제목:<input class='what' type="text" value="{{board.title}}" name = "title">
             <br><br>
-            <button type="submit" class="btn btn-outline-success">글 올리기</button>
-
+            본문 : <textarea class='what2' name="body" id="" cols="30" rows="10">{{board.body}}</textarea>
+            <br><br>
+            인원수 : <input class='what3' type="number" value="{{board.number}}" name="number">
+            
+            장소 : <input class='what3' type="text" value="{{board.location}}" name = 'location'>
+            <br><br>
+            <button type="submit" class="btn btn-outline-success">작성!</button>
         </form>
-
-        <a href="{%url 'board' %}">게시판으로 돌아가기</a>
         </center>
     </div>
 </body>
