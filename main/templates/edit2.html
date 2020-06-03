@@ -55,7 +55,7 @@
         <h1>다시 쓰까요~?</h1>
         <hr>
 
-        <form action ="{%url 'update' board.id %}" method ="POST">
+        <form action ="{%url 'board_update' board.id %}" method ="POST">
             {%csrf_token%}
             제목:<input class='what' type="text" value="{{board.title}}" name = "title">
             <br><br>

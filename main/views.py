@@ -38,7 +38,7 @@ def detail(request,board_id) :
     applier_count=board.total_appliers()
     return render(request, 'detail.html',{'board':board,'applier_count':applier_count,'applied':applied})
 
-def update(request, board_id) :
+def board_update(request, board_id) :
     update_board = get_object_or_404(Board, pk=board_id)
     update_board.title = request.POST['title']
     update_board.pub_date = timezone.datetime.now()
