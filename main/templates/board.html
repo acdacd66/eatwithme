@@ -44,8 +44,12 @@
         <center>
         <h1> eat with your friends !</h1>
         <br>
+        {% if not user.is_authenticated %}
+        <button type="button" class='button' onclick="location.href='{% url 'home' %}' ">홈으로 돌아가기</button>
+        {% else %}
         <button type="button" class='button' onclick="location.href='{% url 'home' %}' ">홈으로 돌아가기</button>
         <button type="button" class='button' onclick="location.href='{% url 'new' %}' ">게시판 글 올리기</button>
+        {% endif %}
         </center>
     </div>
     <br>
